@@ -1,22 +1,31 @@
+// Michael Osgood / FriendFinder Application
+
 // Dependencies
 var express = require('express');
 var bodyParser = require('body-parser');
-
-// Tells Node that we are creating an "express" server
 var app = express();
 
-// Sets an intitial port
-var PORT = process.env.PORT || 3100;
+var PORT = process.env.PORT || 4200;
 
-// // Sets up the Express app to handle data parsing
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: 'application/vnd.api+json' }));
+// Create application/x-www-form-urlencoded parser
+app.use(bodyParser.urlencoded({extended: true}));
 
-require("./routes/apiRoutes")(app);
-require("./routes/htmlRoutes")(app);
+// Parse various different custon JSON types as JSON
+app.use(bodyParser.json({type: 'application/*+json'}))
 
-app.listen(PORT, function() {
-    console.log("App listening on PORT: " + PORT);
+// Parse some custom thing into a buffer
+app.use(bodyParser.raw({type: 'application/vnd.custom-type'}))
+
+// Parse an HTML body into a string
+app.use(bodyParser.text({type: 'text/html'}))
+
+// Connects server.js and apiRoutes.js
+require("./app/routing/apiRoutes.js")(app);
+
+// Connects server.js and htmlRoutes.js
+require("./app/routing/htmlRoutes.js")(app);
+
+
+app.listen(PORT, function(){
+	console.log("App listening on PORT: " + PORT);
 });

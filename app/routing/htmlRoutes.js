@@ -1,34 +1,17 @@
-// Should have two routes:
-// 1) api/friends -displays JSON of all possible friends
-// 2) api/data/friends -saves all of the applications data
+// Michael Osgood / FriendFinder Application
 
-// ===============================================================================
-// DEPENDENCIES
-// We need to include the path package to get the correct file path for our html
-// ===============================================================================
 var path = require("path");
 
-
-// ===============================================================================
-// ROUTING
-// ===============================================================================
-
 module.exports = function(app) {
-  // HTML GET Requests
-  // Below code handles when users "visit" a page.
-  // In each of the below cases the user is shown an HTML page of content
-  // ---------------------------------------------------------------------------
 
-  app.get("/", function(req, res) {
-    res.sendFile(path.join(__dirname, "./home.html"));
-  });
+    // Route to survey.html file
+    app.get("/survey", function(req, res){
+        res.sendFile(path.join(__dirname + "/../public/survey.html"));
+    });
 
-  app.get("/reserve", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/reserve.html"));
-  });
+    // If user is not on a defined path, this will direct them to homepage (home.html)
+    app.use(function(req, res){
+        res.sendFile(path.join(__dirname + "/../public/home.html"));
+    });
 
-  // If no matching route is found default to home
-  app.get("*", function(req, res) {
-    res.sendFile(path.join(__dirname, "../public/reserve.html"));
-  });
 };

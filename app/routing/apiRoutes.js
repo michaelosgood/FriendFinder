@@ -17,7 +17,7 @@ module.exports = function(app) {
 
         console.log(req.body);
 
-        //Here we take the resul of the user's survey POST and parse it
+        //Here we take the result of the user's survey POST and parse it
         var userData = req.body;
         var userScores = userData.scores;
 

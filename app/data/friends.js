@@ -2,7 +2,7 @@
 
 var friends = [
   {
-      name: "Alex Nguyen",
+      name: "Alex",
       photo: "https://scontent-lax3-1.xx.fbcdn.net/v/t1.0-9/180942_10150150668451070_2498866_n.jpg?oh=1f94498108f9d0ee75e33acbea5e4a22&oe=5A5B9560",
       scores: [
       "4",

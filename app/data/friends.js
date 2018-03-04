@@ -3,7 +3,7 @@
 var friends = [
     {
         name: "Alex",
-        photo: "https://commons.wikimedia.org/wiki/File:AlexPic.png",
+        photo: "https://upload.wikimedia.org/wikipedia/commons/0/06/AlexPic.png",
         scores: [
         "4",
         "3",
